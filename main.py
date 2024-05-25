@@ -42,21 +42,22 @@ app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
 # Catch requests over a certain size and redirect to an error page
-class LimitUploadSizeMiddleware(BaseHTTPMiddleware): 
-    def __init__(self, app, max_upload_size: int):
-        super().__init__(app)
-        self.max_upload_size = max_upload_size
+if not first_start:
+    class LimitUploadSizeMiddleware(BaseHTTPMiddleware): 
+        def __init__(self, app, max_upload_size: int):
+            super().__init__(app)
+            self.max_upload_size = max_upload_size
 
-    async def dispatch(self, request: Request, call_next):
-        if request.method == "POST" or request.method == "PUT":
-            if request.headers.get("content-length"):
-                content_length = int(request.headers["content-length"])
-                if content_length > self.max_upload_size:
-                    return templates.TemplateResponse("error.html", {"request": request, "error": "File too large"})
-        return await call_next(request)
+        async def dispatch(self, request: Request, call_next):
+            if request.method == "POST" or request.method == "PUT":
+                if request.headers.get("content-length"):
+                    content_length = int(request.headers["content-length"])
+                    if content_length > self.max_upload_size:
+                        return templates.TemplateResponse("error.html", {"request": request, "error": "File too large"})
+            return await call_next(request)
 
 
-app.add_middleware(LimitUploadSizeMiddleware, max_upload_size=max_upload_size)
+    app.add_middleware(LimitUploadSizeMiddleware, max_upload_size=max_upload_size)
 
 def load_config_from_file(file_name):
     pass
@@ -145,6 +146,7 @@ def get_date():
 
 @app.post("/setup/")
 async def setup(
+    request: Request,
     name: str = Form(...),
     password: str = Form(...),
     upload: int = Form(...),
@@ -174,6 +176,7 @@ async def setup(
         json.dump(config, f, indent=4)
 
     return templates.TemplateResponse("error.html", {"request": request, "error": "Please restart the server"})
+
 
 # Return installation page of the imageboard
 @app.get("/install", response_class=HTMLResponse)
