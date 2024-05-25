@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+		background: #ffffee url("https://web.archive.org/web/20120521132018im_/http://ylilauta.org/css/yotsuba/fade.png") repeat-x 50% 0;
+		color: #800000;
+		font-family: arial,helvetica,sans-serif;
+		font-size: 13px;
+      }
+#postform td.label {
+	border: 1px solid #880000;
+	background-color: #eeaa88;
+	font-weight: 800;
+}
+      .title {
+        margin: auto;
+        text-align: center;
+      }
+
+      p {
+        margin: auto;
+        text-align: center;
+      }
+
+      .post {
+        display: inline-block;
+        height: 50px;
+        padding: 10px;
+        margin-bottom: 10px;
+        background-color: #F0E0D6;
+        text-align: left;
+      }
+
+      .postname {
+        color: #117743;
+        text-align: left;
+      }
+
+      .postcontent {
+        text-align: left;
+      }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Install</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+  <header>
+    <div class="title">
+      <h1><b>Install</b></h1>
+    </div>
+	</header>
+    <hr>
+	<p>Welcome to the Overboard Infinity imageboard package</p>
+	<p>This is a setup page to easily configure all the settings</p>
+	<hr>
+<form action="/setup/" method="post" enctype="multipart/form-data">
+		<fieldset>
+		<table id="postform">
+			<tbody>
+			<tr>
+				<td class="label"><label for="name">Admin name</label></td>
+				<td><input name="name" id="name" type="text" autocomplete="off"></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="password">Admin password</label></td>
+				<td><input name="password" id="password" type="password" autocomplete="off"></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="upload">Max upload size (in kilobytes)</label></td>
+				<td><input name="upload" id="upload" type="number" autocomplete="off"></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="folder">Upload folder</label></td>
+				<td><input name="folder" id="folder" type="text" value="files/files" autocomplete="off"></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="disable_captcha">Disable CAPTCHA</label></td>
+				<td><input name="disable_captcha" id="disable_captcha" type="checkbox" autocomplete="off"></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="disable_captcha">Enable tripcodes</label></td>
+				<td><input name="disable_captcha" id="disable_captcha" type="checkbox" autocomplete="off"></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="require_img">Require image</label></td>
+				<td><input name="require_img" id="require_img" type="checkbox" autocomplete="off"></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="require_title">Require title</label></td>
+				<td><input name="require_title" id="require_title" type="checkbox" autocomplete="off"></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="disable_img">Disable image</label></td>
+				<td><input name="disable_img" id="disable_img" type="checkbox" autocomplete="off"></td>
+			</tr>
+		</table>
+		<td><input type="submit" value="Install"></td>
+		</fieldset>
+	</form>
+    <hr>
+  </body>
+</html>

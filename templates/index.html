@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+		background: #ffffee url("../static/files/assets/fade.png") repeat-x 50% 0;
+		color: #800000;
+		font-family: arial,helvetica,sans-serif;
+		font-size: 13px;
+      }
+#postform td.label {
+	border: 1px solid #880000;
+	background-color: #eeaa88;
+	font-weight: 800;
+}
+      .title {
+        margin: auto;
+        text-align: center;
+      }
+
+      p {
+        margin: auto;
+        text-align: center;
+      }
+
+      .post {
+        display: inline-block;
+        padding: 10px;
+        margin-bottom: 10px;
+        text-align: left;
+		background-color: #f0e0d6;
+		border-bottom: 1px solid #d9bfb7;
+		border-right: 1px solid #d9bfb7;
+      }
+
+      .postname {
+        color: #117743;
+        text-align: left;
+      }
+
+      .postcontent {
+        text-align: left;
+      }
+		.boardlist {
+		  width: 100%;
+		  text-align: center;
+		  margin-bottom: 10px;
+		}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+.titlepost{
+	color: #cc1105;
+}
+.navbar {
+  overflow: hidden;
+  background-color: #f0e0d6;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+}
+.memusage {
+align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #EEAA88;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+  
+}
+.main-content {
+    margin-left: 160px; /* should be slightly more than the sidebar width for spacing */
+    padding: 10px; /* optional: for better visual spacing */
+}
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Overboard</title>
+    <link rel="stylesheet" href="style.css">
+	<script>
+function openModal(src) {
+  var modal = document.getElementById("imageModal");
+  var modalImg = document.getElementById("modalImage");
+  var captionText = document.getElementById("caption");
+
+  modal.style.display = "block";
+  modalImg.src = src;
+  captionText.innerHTML = src; // You can modify this to display a different caption if needed
+}
+
+function closeModal() {
+  var modal = document.getElementById("imageModal");
+  modal.style.display = "none";
+}
+function updateImage() {
+	const img = document.getElementById('dynamic-image');
+	const timestamp = new Date().getTime(); // Prevent caching
+	img.src = '/image?t=' + timestamp;
+}
+setInterval(updateImage, 15000);
+</script>
+  </head>
+  <body>
+
+	<header>
+    <div class="title">
+      <h1><b>Overboard</b></h1>
+      <h3>under construction</h3>
+    </div>
+	</header>
+	<hr>
+	<nav>
+	<div class="sidenav">
+		  <table>
+			<tr>
+			<img src="/static/files/assets/logo.png" width=160px height=220px>
+			<p>Active threads</p>
+			</tr>
+			<tr>
+		{% for post in posts %}
+
+			  <td>
+				<a href="../board/{{post.id}}/">{{post.title}}</a>
+			  </td>
+
+		{% endfor %}
+			</tr>
+		  </table>
+	</div>
+	</nav>
+	<div class="main-content">
+<form action="/post/" method="post" enctype="multipart/form-data">
+		<fieldset>
+		<h3>Reply</h3>
+		<table id="postform">
+			<tbody>
+			<tr>
+				<td class="label"><label for="title">Title</label></td>
+				<td><input name="title" id="title" type="text" autocomplete="off"></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="name">Name (leave empty for anonymous)</label></td>
+				<td><input name="name" id="name" type="text" autocomplete="off"></td>
+				
+			</tr>
+			<tr>
+				<td class="label"><label for="comment">Message</label></td>
+				<td><textarea name="comment" id="comment" rows="4" cols="24"></textarea></td>
+			</tr>
+			<tr>
+				<td class="label"><label for="file">File</label></td>
+				<td><input name="file" id="file" type="file" size="35"></td>
+			</tr>
+			{% if not is_solved %}
+			
+			<tr>
+				<td class="label">
+				<label for="captcha">CAPTCHA</label>
+				<img src="{{ url_for('static', path='files/captcha/' + session.captcha_img|string) }}"></td>
+				
+				<td><input name="captcha" id="captcha" type="text" autocomplete="off"></td>
+			</tr>
+			{% endif %}
+			<tr>
+				<td class="label"><label for="postpassword"><abbr title="Is used to delete posts.">Password</abbr></label></td>
+				<td><input name="password" id="postpassword" type="text" autocomplete="off"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<ul id="postinfo">
+						<li>Allowed filetypes are gif, jpeg, jpg, png, webp</li>
+						<li>The biggest allowed filesize is 10 MB.</li>
+					</ul>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<td><input type="submit" value="Post"></td>
+		</fieldset>
+	</form>
+
+
+
+<div class="thread">
+
+<table>
+  <tr>
+	<td>
+	<p class="titlepost"><b>{{ threadhead.title }}</b></p>
+	</td>
+	<td>
+	  <p class="postname">
+		
+		<b>{{ threadhead.author }}</b>
+	  </p>
+	</td>
+	<td>
+	  <p>{{ threadhead.date }}, {{ threadhead.time }} No.{{ threadhead.id }}</p>
+	</td>
+  </tr>
+</table>
+{% if threadhead.hasimage %}
+<img src="{{ url_for('static', path='files/' + threadhead.filename|string) }}" style="width:250px;height:250px;" onclick="openModal('{{ url_for('static', path='files/' + threadhead.filename|string) }}')">
+
+<!-- The Modal -->
+<div id="imageModal" class="modal">
+  <span class="close" onclick="closeModal()">&times;</span>
+  <img class="modal-content" id="modalImage">
+  <div id="caption"></div>
+</div>
+{% endif %}
+	  {% for line in threadhead.content %}
+      <p class="postcontent">{{ line }}</p>
+	  {% endfor %}
+</div>
+
+<hr>
+
+<form action="/delete" method="post" enctype="multipart/form-data"> <!-- deletion form -->
+  {% for post in posts %}
+  <br>
+  <div class="post">
+
+    <table>
+      <tr>
+        <td>
+          <input name="post_ids" type="checkbox" value="{{ post.id|string }}"> <!-- select messages you want to delete -->
+        </td>
+        <td>
+		<p class="titlepost"><b>{{ post.title }}</b></p>
+		</td>
+		<td>
+          <p class="postname">
+		    
+            <b>{{ post.author }}</b>
+          </p>
+        </td>
+        <td>
+          <p>{{ post.date }}, {{ post.time }} No.{{ post.id }}</p>
+		  {% if authed %}
+		  </td>
+		  <td>
+		  <p>{{ post.ip }}</p>
+		  {% endif %}
+        </td>
+      </tr>
+    </table>
+    {% if post.hasimage %}
+    <img src="{{ url_for('static', path='files/' + post.filename|string) }}" style="width:250px;height:250px;" onclick="openModal('{{ url_for('static', path='files/' + post.filename|string) }}')">
+
+    <!-- The Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="modalImage">
+      <div id="caption"></div>
+    </div>
+    {% endif %}
+	  {% for line in post.content %}
+      <p class="postcontent">{{ line }}</p>
+	  {% endfor %}
+  </div>
+  <br>
+  {% endfor %}
+  {% if not authed %}
+  <label for="passw">Password:</label><br>
+  <input type="text" id="passw" name="passw" autocomplete="off"><br>
+  {% endif %}
+  <input type="submit" value="Delete">
+</form>
+    <hr>
+	<footer>
+    <p>Running on FastAPI for Python</p>
+	<p>Rendering took {{time|string}}s</p>
+	<br>
+	<p>Memory usage:</p>
+	<img id="dynamic-image" class="memusage" src="../static/files/assets/usage.png">
+	<br>
+	<a href="https://github.com/ablaternae/py-tripcode">Tripcode method designed by ablaternae on Github</a>
+	</footer>
+	</div>
+  </body>
+</html>
