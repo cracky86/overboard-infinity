@@ -1,0 +1,1414 @@
+/* global CSS values */
+
+/* global rules to override any browser CSS and to set global values */
+.small {
+  font-size: 75%;
+  text-decoration: none;
+}
+
+.selectedCell, #dropzone, #dropzoneQr {
+  top: 5px;
+  margin-bottom: 5px;
+  padding: 10px 0px;
+}
+
+#dropzone, #dropzoneQr {
+  background-color: rgba(200, 200, 200, 0.5);
+}
+
+.selectedCell {
+  margin-top: 10px;
+}
+
+#selectedDiv, #selectedDivQr {
+  text-align: left;
+  padding-bottom: 5px;
+}
+
+#dropzone, #dropzoneQr {
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  transition: all 0.2s ease 0s;
+  border: 2px dashed rgba(125, 125, 125, 0.4);
+}
+
+.removeButton {
+  cursor: pointer;
+  color: rgba(125, 125, 125, 0.5);
+  display: inline-block;
+  margin-right: 5px;
+  font-size: 20px;
+}
+
+.removeButton:hover {
+  color: #7D7D7D;
+}
+
+.small a {
+  text-decoration: none;
+}
+
+h3, p, label {
+  margin: 0.25em 0;
+}
+
+/*input, textarea {
+    margin: 0.25em;
+}*/
+
+hr {
+    height: 0px;
+    border-width: 1px medium medium;
+    border-style: solid none none;
+    border-color: #b7c5d9;
+}
+
+a {
+    color: #34345c;
+}
+
+u {
+    text-decoration: underline;
+}
+
+s {
+    text-decoration: line-through;
+}
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}
+
+/* import resources here; external CSS, fonts, etc */
+
+/* body styles, inherited by whole page */
+body {
+    color: #000;
+    background: #ffffee url("../../static/files/assets/fade.png") repeat-x 50% 0;
+    font-family: arial, helvetica, sans;
+    font-size: 100%;
+    margin: 0px;
+}
+
+/* header and nav / top of page styles */
+header {
+    width: 50%;
+    margin: 3em auto 0 auto;
+    text-align: center;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* don't need to color this, just makes customizing colors harder */
+    background-color: #d6daf0;
+    border-bottom: 1px solid #34345c;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+nav a {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 70%;
+    margin: 0 0.2em 0 0.2em;
+    float: left;
+}
+
+nav span {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 70%;
+    margin: 0 0.2em 0 0.2em;
+    float: left;
+}
+
+.navLinkHome:before, #navLinkHome:before {
+    font-family: FontAwesome;
+    content: "\f015";
+    margin-right: 0.25em;
+}
+
+.navBoardList:before, #navBoardList:before {
+    font-family: FontAwesome;
+    content: "\f02c";
+    margin-right: 0.25em;
+}
+
+.linkOverboard:before, .navOverboard:before, #linkOverboard:before, #navOverboard:before {
+    font-family: FontAwesome;
+    content: "\f069";
+    margin-right: 0.25em;
+}
+
+/* help */
+#navPosting:before, .navPosting:before {
+    font-family: FontAwesome;
+    content: "\f128";
+    margin-right: 0.25em;
+}
+
+/* board list */
+.boardsHeader {
+    font-size: 150%;
+}
+
+#boardsWrapper {
+    width: 80%;
+    margin: 1em auto 1em auto;
+}
+
+#divBoards {
+    margin: 1em auto 0.5em auto;
+}
+
+#divBoards .col1 {
+    width: 15%;
+}
+
+#divBoards .col2 {
+    width: 20%;
+}
+
+#divBoards .col3 {
+    width: 10%;
+}
+
+#divBoards .col4 {
+    width: 10%;
+}
+
+#divBoards .col5 {
+    width: 10%;
+}
+
+#divBoards .col6 {
+    width: 25%;
+}
+
+.boardsCell, #boardsCellHeader {
+    width: 100%;
+    margin: 0.25em 0 0.25em 0;
+}
+
+.boardsCell:nth-of-type(odd) span {
+    background-color: #d6daf0;
+}
+
+.boardsCell span {
+    display: inline-block;
+    text-overflow: ellipsis;
+    text-decoration: none;
+    padding: 0.25em;
+    margin: 0.05em;
+}
+
+#boardsCellHeader span {
+    font-weight: bold;
+    display: inline-block;
+    border-bottom: 1px solid #000333;
+    background-color: #98e;
+}
+
+.search {
+    margin: 1em 0 1em 0;
+}
+
+.search form {
+    display: inline-block;
+}
+
+#divPages {
+    display: inline-block;
+    /* don't need to color this, just makes customizing colors harder */
+    /* background: #d6daf0; */
+    border-color: #b7c5d9;
+    border-width: medium 1px 1px medium;
+    border-style: none solid solid none;
+}
+
+#divPages a {
+    text-decoration: none;
+    padding: 0 0.25em;
+}
+
+/* thread and board pages */
+.threadPages {
+    /* don't need to color this, just makes customizing colors harder */
+    /* background: #d6daf0; */
+    border-color: #b7c5d9;
+    border-width: medium 1px 1px medium;
+    border-style: none solid solid none;
+    padding: 0.25em;
+    float: left;
+    font-size: 125%;
+    margin-top: 0.5em;
+}
+
+.threadPages a {
+    text-decoration: none
+}
+
+.divPages #divPages, .boardPages #divPages {
+    border: none;
+}
+
+.threadPages span {
+    color: #34345c;
+}
+
+.boardPages {
+    background: #d6daf0;
+    border-color: #b7c5d9;
+    border-width: medium 1px 1px medium;
+    border-style: none solid solid none;
+    color: #34345c;
+    padding: 0.1em 0.25em;
+}
+
+/* board banner */
+.boardHeader p {
+    color: #af0a0f;
+}
+
+.boardHeader p#labelName {
+    font-size: 200%;
+}
+
+.boardHeader p#labelDescription {
+    font-size: 100%;
+}
+
+.boardHeader a {
+    font-size: 75%;
+    display: inline-block;
+    text-decoration: none;
+}
+
+#modeBanner {
+    color: #fff;
+    background-color: #e04000;
+    text-align: center;
+    margin: 1em;
+}
+
+#modeBanner h3 {
+    font-size: 95%;
+}
+
+/* post new thread */
+#postBox {
+    margin: 1em auto;
+    padding: 0.5em;
+    text-align: center;
+}
+
+#postBox table {
+    width: 100%;
+    font-size: 75%;
+}
+
+#postBox textarea {
+    width: 100%;
+    height: 8em;
+}
+
+.form-post {
+    margin: auto;
+    display: inline-block;
+}
+
+.form-post td {
+    text-align: left;
+    padding: 0.1em;
+}
+
+.form-post th {
+    text-align: left;
+    padding: 0 1em 0 0.5em;
+}
+
+.form-post th {
+    background-color: #98e;
+}
+
+.spoilerCheckbox, #flagsDiv {
+    display: inline-block;
+}
+
+#postBox #captchaDiv {
+    text-align: left;
+}
+
+/* thread/post report and management form */
+.contentAction {
+    clear: both;
+    margin-top: 2em;
+    /* don't need to color this, just makes customizing colors harder */
+    /* background-color: #d6daf0; */
+    border-color: #B7C5D9;
+    border-width: medium 1px 1px medium;
+    border-style: none solid solid none;
+    padding: 0.5em;
+    margin: 4em 0 1em 1em;
+    float: left;
+}
+
+#threadReport label, #threadReport img, .contentAction label, .contentAction img, #transferControls, #ipDelete {
+    display: block;
+}
+
+#threadReport label.checkbox {
+    display: inline-block;
+}
+
+.buttonBox {
+    margin-top: 0.5em;
+}
+
+#divControls, #transferControls , #ipDelete {
+    margin: 1em;
+}
+
+#divControls input, #divControls label {
+    display: inline-block;
+}
+
+/* thread list, some elements are in the post section */
+#threadList {
+    margin: 1em;
+}
+
+#threadList #divThreads, #threadList #threadLinks {
+  font-size: 75%;
+}
+
+#panelMessage {
+    margin: 1em;
+}
+
+#divMessage {
+    text-align: center;
+}
+
+/* posts */
+.divPosts {
+    margin: 1em 0;
+}
+
+.postCell {
+    margin: 0.25em 0;
+}
+
+.innerPost, .markedPost {
+    background-color: #D6DAF0;
+    display: inline-block;
+    overflow: hidden;
+    padding-right: 0.25em;
+    max-width: 100%;
+    border-color: #B7C5D9;
+    border-width: medium 1px 1px medium;
+    border-style: none solid solid none;
+}
+
+.markedPost {
+    background-color: #D6BAD0;
+}
+
+.linkName {
+    font-weight: bold;
+    color: #0F0C5D;
+}
+
+.linkName:hover {
+    color: #ff0000;
+}
+
+.noEmailName, .noEmailName:hover {
+    color: #117743;
+}
+
+.quoteLink {
+    color: #ff0000;
+}
+
+.linkSelf {
+    color: #000;
+    text-decoration: none;
+}
+
+.linkSelf:hover {
+    color: #ff0000;
+}
+
+.linkQuote {
+    color: #000;
+    text-decoration: none;
+}
+
+.linkQuote:hover {
+    color: #ff0000;
+}
+
+.labelSubject {
+    color: #0F0C5D;
+    font-weight: bold;
+}
+
+.labelRole {
+    color: #ff0000;
+    font-weight: bold;
+}
+
+.divMessage {
+    margin-left: 3em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    word-wrap: break-word;
+}
+
+.divBanMessage {
+    color: #ff0000;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-left: 1em;
+    font-size: 120%;
+}
+
+.uploadCell {
+    margin: 0.25em 1em 0.25em 0.5em;
+    float: none;
+}
+
+.uploadCell img {
+    float: left;
+    margin-right: 1em;
+    margin-bottom: 1em;
+}
+
+.multipleUploads .opUploadPanel, .multipleUploads .panelUploads {
+    float: left;
+    width: 100%;
+}
+
+.multipleUploads .uploadCell {
+    float: left;
+}
+
+.uploadDetails {
+    margin-bottom: 0.5em;
+}
+
+.opCell {
+    clear: left;
+}
+
+.panelIp, .panelProxyIp {
+    margin: 0.25em 1em 0.25em 0.5em;
+}
+
+.panelBacklinks a {
+    padding-left: 0.5em;
+}
+
+.hideLink {
+    vertical-align: top;
+}
+
+.aa {
+    font-family: Mona, "MS PGothic", "ＭＳ Ｐゴシック", sans-serif;
+    display: block !important;
+    font-size: 12pt;
+    line-height: 1.1;
+}
+
+.labelLastEdit {
+  margin-top: 0.75em;
+  margin-left: 0.75em;
+  /* can't hide edit label, transparency is key */
+  display: inline !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+
+  color: #fff;
+  background-clip: text !important;
+  background: transparent !important;
+  filter: invert(1) grayscale(1) !important;
+
+  transform: scale(1) !important;
+  clip-path: circle(1) !important;
+  position: static !important;
+  font-size: 12px !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 1px;
+  border-radius: 5px;
+  white-space: nowrap;
+}
+
+.contentOmissionIndicator {
+    margin: 1em 0;
+}
+
+.labelOmission {
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+}
+
+/* this is the preview box */
+#panelContent {
+    font-size: 75%;
+}
+
+/* markdown */
+.greenText {
+  color: #789922;
+}
+
+.redText, .headerText {
+    color: #AF0A0F;
+    font-weight: bold;
+    font-size: 125%;
+/*    position: absolute; */
+}
+
+span.spoiler {
+    background: #000;
+    color: #000;
+    padding: 0 1px;
+}
+
+.spoiler:hover {
+    color: #000;
+    background-color: #d6daf0;
+}
+
+/* refresh timer */
+.divRefresh {
+    display: block;
+    float: left;
+    clear: both;
+    margin: 0 0 0 1em;
+    padding: 0;
+    height: 1.5em;
+}
+
+.divRefresh label, .divRefresh input {
+    display: inline-block;
+    margin: 0;
+}
+
+/* catalog */
+
+/* this is important since the catalog cell container shares the same id as the actual threads container on other pages */
+.catalogDiv {
+    width: 95%;
+    margin: 1em auto;
+    text-align: center;
+}
+
+#catalogId {
+    text-align: center;
+    margin: 1.5em 0 1em 0;
+    font-size: 150%;
+}
+
+.red {
+    color: #af0a0f;
+}
+
+.linkThumb img {
+    max-height: 128px;
+    max-width: 128px;
+}
+
+.catalogCell {
+    display: inline-block;
+    width: 10em;
+    text-align: center;
+    padding: 0.25em;
+    height: 14em;
+    overflow: hidden;
+    overflow-y: auto;
+    background-color: rgba(182, 182, 182 ,0.12);
+    margin: 0.1em;
+    border: 2px solid rgba(111, 111, 111, 0.34);
+}
+
+.catalogCell .divMessage {
+    margin: 0;
+    font-size: 75%;
+}
+
+.catalogCell .labelSubject {
+    font-size: 75%;
+}
+
+.threadStats {
+    font-size: 75%;
+}
+
+.lockIndicator:before {
+    font-family: FontAwesome;
+    content: "\f023";
+}
+
+.pinIndicator:after {
+    font-family: FontAwesome;
+    content: "\f08d";
+}
+
+.cyclicIndicator:after {
+    font-family: FontAwesome;
+    content: "\f021";
+}
+
+/* archive pages */
+#archiveThreadList, #archiveBoardList {
+    margin: 1em;
+}
+
+#archiveThreadList div, #archiveBoardList div {
+    margin: 0.25em 0;
+}
+
+/* static pages */
+#help {
+    margin: 2em;
+}
+
+.marker {
+    font-weight: bolder;
+}
+
+/* index page */
+.infoBox {
+    border: 1px solid #34345c;
+    background-color: #d6daf0;
+    /* fix right margin on site announcements */
+    padding: 10px;
+    margin: 0em auto 1em auto;
+    box-sizing: border-box;
+    /* padding: 0.5em 0 0.5em 0.5em; */
+
+}
+
+#topBox {
+    width: 70%;
+    margin: 2.5em auto 1em auto;
+    padding: 0.5em;
+}
+
+#topBox p {
+    display: inline-block;
+    font-size: 80%;
+    vertical-align: top;
+    /* margin: 1em;
+    padding: 0.5em; */
+}
+
+#topBox img {
+    width: 10em;
+}
+
+#indexWrapper {
+    width: 70%;
+    margin: 1em auto;
+    padding: 0.5em;
+}
+
+#innerWrapper {
+    width: 69%;
+    float: right;
+    /* what's this for */
+    padding-right: 0em;
+    /* padding-right: 0.5em; */
+}
+
+#newsBox {
+    width: 100%;
+    padding: 0.5em 0 0.5em 0.5em;
+}
+
+#links {
+    padding: 0.5em 0.5em 0.5em 0.5em;
+    font-size: 75%;
+    display: inline-block;
+}
+
+#links a {
+    text-decoration: none;
+}
+
+.linkLogs:before, #linkLogs:before {
+    font-family: FontAwesome;
+    content: "\f05e";
+    margin-right: 0.25em;
+}
+
+.linkArchives:before {
+    font-family: FontAwesome;
+    content: "\f187";
+    margin-right: 0.25em;
+}
+
+.linkAccount:before, #linkAccount:before {
+    font-family: FontAwesome;
+    content: "\f013";
+    margin-right: 0.25em;
+}
+
+.linkGlobalRules:before, #linkGlobalRules:before {
+    font-family: FontAwesome;
+    content: "\f128";
+    margin-right: 0.25em;
+}
+
+.linkFaq:before, #linkFaq:before {
+    font-family: FontAwesome;
+    content: "\f129";
+    margin-right: 0.25em;
+}
+
+.topBoards {
+    border: 1px solid #34345c;
+    background-color: #d6daf0;
+    /* why were these 2 marked important? */
+    width: 100%;
+    margin: 1em 0 1em 0;
+    padding: 0.5em 0 0.5em 0.5em;
+}
+
+.topBoards h3 {
+    margin-bottom: 0.25em;
+}
+
+.topBoards br {
+    margin-bottom: 0.5em;
+}
+
+#divLatestPosts {
+    width: 100%;
+    margin: 1em 0 1em 0;
+    padding: 0.5em 0 0.5em 0.5em;
+    overflow: hidden;
+}
+
+#divLatestPosts div {
+    margin: 0.25em 0;
+}
+
+#divLatestImagesInfoBox {
+    float: left;
+    max-width: 20%;
+    padding: 0.5em;
+    margin: 0 1em 1.5em auto;
+    text-align: center;
+}
+
+#divLatestImagesInfoBox div div {
+    max-width: 100%;
+}
+
+/* CSS for pages that deal with site and account settings and bans */
+.settings {
+    margin: 1em;
+    width: 40%;
+    border: 1px solid #b7c5d9;
+    padding: 0.5em;
+}
+
+label {
+    display: block;
+}
+
+.banners {
+    margin: 1em;
+    width: auto;
+    padding: 0.5em;
+}
+
+.settings textarea {
+    display: block;
+    height: 5em;
+}
+
+.settings hr {
+    height: 1px;
+    color: #e9edf3;
+}
+
+input.wide, textarea.wide {
+    width: 90%;
+}
+
+#redirect, #maint, #hashBan {
+    text-align: center;
+}
+
+#divSolvedCaptcha {
+    font-size: 125%;
+}
+
+#labelCaptchaId {
+    color: #ff0000;
+}
+
+#rules {
+    text-align: center;
+}
+
+#divRules {
+    margin: 1em auto;
+}
+
+/* footer styles */
+footer {
+    width: 100%;
+    clear: both;
+    margin-top: 2em;
+    text-align: center;
+    background-color: #d6daf0;
+    padding: 0.25em 0 0.25em 0;
+}
+
+footer a, footer p {
+    margin: 0 0.5em 0.5em 0.5em;
+    text-decoration: none;
+
+}
+
+/* this has to go down here to override anything above it */
+.hidden {
+    display: none;
+}
+
+/* Odilitime's rules */
+.uploadCell {
+  max-width: 100%;
+}
+.uploadCell video {
+  max-width: 100%;
+  max-height: 90vh;
+}
+.imgExpanded {
+  max-width: 100%;
+}
+a[data-filemime=application/x-shockwave-flash] img {
+  width: 255px;
+}
+
+a[src=/genericThumb.png] img {
+  width: 255px;
+}
+
+@keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+.blink_me {
+  -webkit-animation-name: blinker;
+  -webkit-animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+
+  animation-name: blinker;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+}
+
+/* atc */
+.linkPost {
+    max-width: 100%;
+}
+
+.linkPost>img {
+    max-width: 100%;
+}
+
+/* Quick reply (why was most of this ever in the script?) */
+
+#quick-reply {
+    position: fixed;
+    right: 5%;
+    top: 5%;
+    float: right;
+    display: block;
+    padding: 0 0 0 0;
+    width: 300px;
+    background: rgb(214, 218, 240);
+    z-index: 100;
+}
+#quick-reply #post-form-inner {
+    min-width: 300px;
+}
+#quick-reply .post-table tr td:nth-child(2) {
+    width: 33%;
+    text-align: right;
+    padding-right: 4px;
+}
+#quick-reply tr td:nth-child(2) input[type="submit"] {
+    width: 99%;
+}
+#quick-reply th, #quick-reply td {
+    margin: 0;
+    padding: 0;
+}
+#quick-reply th {
+    text-align: center;
+    padding: 2px 0;
+    border: 1px solid #222;
+}
+#quick-reply th .handle {
+    float: left;
+    width: 100%;
+    display: inline-block;
+}
+#quick-reply th .close-btn {
+    float: right;
+    padding: 0 5px;
+}
+#quick-reply input[type="text"], #quick-reply select {
+    width: 100%;
+    padding: 2px;
+    font-size: 10pt;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
+#quick-reply input[type="password"], #quick-reply select {
+    width: 100%;
+    padding: 2px;
+    font-size: 10pt;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
+#quick-reply textarea {
+    min-width: 100%;
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing: border-box;
+    font-size: 10pt;
+    resize: both;
+}
+
+#quick-reply input[type="file"] {
+    padding: 5px 2px;
+}
+#quick-reply .nonsense {
+    display: none;
+}
+#quick-reply td.recaptcha {
+    text-align: center;
+    padding: 0 0 1px 0;
+}
+#quick-reply td.recaptcha span {
+    display: inline-block;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+#quick-reply td.recaptcha-response {
+    padding: 0 0 1px 0;
+}
+
+#quick-reply table {
+    border-collapse: collapse;
+    border-style: none solid solid none;
+    border-width: 0px 1px 1px 0px;
+    border-color: rgb(183, 197, 217);
+    margin: 0;
+    width: 100%;
+}
+
+/*
+disable for [code] processing
+pre {
+  white-space: normal;
+}
+*/
+
+.textBrowserBreaks {
+  content: " ";
+  display: block;
+  margin: 1px;
+}
+
+/* broken expansion
+.imgLink img {
+  max-width: 255px;
+  max-height: 255px;
+}
+*/
+
+.panelBacklinks {
+  word-wrap: break-word;
+}
+
+.dice {
+  font-weight: bold;color: #9f0000;
+}
+
+.labelNav {
+  display: none;
+}
+
+.spanId:hover .labelNav {
+  display: inline;
+}
+
+/* cleaned up index html changes */
+.mobileNav {
+  display: none;
+}
+div.boardsCell a[href="/b/"] ~ span.indicatorInactive, div.boardsCell a[href="/meta/"] ~ span.indicatorInactive {
+  display: none;
+}
+
+/* new text modes */
+.orangeText {
+  color: orange;
+}
+
+/* http://creative-punch.net/2014/02/colorful-gradient-text-css3/ */
+.memeText {
+  background: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
+  /* almost everything supports this */
+  background-clip: text;
+  /* chrome needs this */
+  -webkit-background-clip: text;
+  /* firefox 49 supports this */
+  -webkit-text-fill-color: transparent;
+}
+
+/* loops seemlessly */
+@keyframes autism1 {
+  from {
+      color: rgb(255, 0, 0);
+  }
+  16.6% {
+      color: rgb(255, 0, 255);
+  }
+  33.3% {
+      color: rgb(0, 0, 255);
+  }
+  50% {
+      color: rgb(0, 255, 255);
+  }
+  66.6% {
+      color: rgb(0, 255, 0);
+  }
+  83.3% {
+      color: rgb(255, 255, 0);
+  }
+  to {
+      color: rgb(255, 0, 0);
+  }
+}
+@keyframes autism2 {
+  0%{
+    background-position-x:0%;
+  }
+  100% {
+    background-position-x:100%;
+  }
+}
+@keyframes autism3 {
+  0%   {background-position:  0% 50%}
+  50%  {background-position:100% 50%}
+  100% {background-position:  0% 50%}
+}
+@keyframes autism4 {
+  to {
+    background-position: 200% center;
+  }
+}
+/*
+.autismText {
+  animation: autism1 0.5s infinite;
+}
+*/
+/* https://codepen.io/shshaw/pen/YpERQQ */
+.autismText {
+  /*
+  background: repeating-linear-gradient(-45deg,red,red 20px,blue 20px,blue 40px);
+  background-size:56px 56px;
+  background-position-x:0%;
+  animation: autism2 20s infinite linear forwards;
+  */
+  /*
+  background: linear-gradient(270deg, #ff0000, #ffa600, #fff500, #06ff00, #00c9ff, #2300ff, #ff00fa, #ff0000);
+  background-size: 1600% 1600%;
+  animation: autism3 30s ease infinite;
+  */
+  background: linear-gradient(to right, #ff0000, #ffa600, #fff500, #06ff00, #00c9ff, #2300ff, #ff00fa, #ff0000);
+  background-size: 200% auto;
+  color: #000;
+  background-clip: text;
+  /* chrome needs this */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: autism4 1s linear infinite;
+}
+
+.redMemeText {
+  color: #AF0A0F;
+}
+
+.whiteText {
+  color: #fff;
+}
+
+.pinkText {
+  color: #FEAEC9;
+}
+
+.yellowText {
+  color: #FDCA0E;
+}
+
+.cyanText {
+  color: #3F99CC;
+}
+
+.blueText {
+  color: #3F47CC;
+}
+
+.purpleText {
+  color: #A248A5;
+}
+.brownText {
+  color: #B67C55;
+}
+
+/* drop down menu stuff */
+
+ul.menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 0;
+  background-color: inherit;
+}
+
+ul.menu li ul.sub {
+  height: 0px;
+  position: absolute;
+  top: 12px;
+  left: 0;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  z-index: 0;
+  background-color: inherit;
+}
+
+ul.menu li:hover ul.sub {
+  height: 900%;
+  width: 200px;
+}
+
+ul.menu > li {
+  position: relative;
+  z-index: 10;
+  background-color: inherit;
+}
+
+ul.menu ul.sub > li {
+  position: relative;
+  font-size: 142%;
+}
+
+.hField {
+  margin-left: -9999px;
+}
+
+.ownerControlDiv {
+  border: 1px solid #b7c5d9;
+  margin: 5px;
+  padding: 10px;
+}
+
+/* prevent long floods */
+
+.divMessage {
+  max-height: 640px;
+  overflow-y: auto;
+  /* make the overflow happy */
+  /* was inline-block but that makes uploads wrap */
+  /* has to be inline-block */
+  display: inline-block;
+}
+
+#expandAll {
+  margin-right: 16px;
+}
+*
+ * Name: Yotsuba
+ * Orginal Auther: Japs or Moot
+ * Updated By: TheJellyBeanKing & OdiliTime
+ */
+
+/* Body */
+html body {
+  background: #FFFFEE /* url("https://endchan.net/theme/media/3.png") repeat-x 50% 0% */;
+  color: #800000;
+}
+
+/* Nav Bar / Header */
+html nav {
+  background-color: #F0E0D6;
+  color: #800000;
+  border-bottom: 1px solid #800;
+}
+
+html nav a {
+  color: #800;
+}
+
+html .boardHeader p {
+  color: #af0a0f;
+}
+
+/* front page */
+html .infoBox {
+  background-color: #F0E0D6;
+  color: #800000;
+  border: 1px solid #800;
+}
+
+html footer {
+  background-color: #F0E0D6;
+  color: #800000;
+  border-top: 1px solid #800;
+}
+
+/* post form */
+html .form-post th {
+  background-color: #EA8;
+}
+
+/* thread/post report and management form */
+html .contentAction, html #transferControls, html #ipDelete {
+  background: #f0e0d6;
+  border-color: #d9bfb7;
+}
+
+html .threadPages, html #divPages {
+  background: #f0e0d6;
+  border-color: #d9bfb7;
+}
+
+
+/* posts */
+html .innerPost, html .markedPost {
+  background: #f0e0d6;
+  border-color: #d9bfb7;
+}
+
+html .markedPost {
+  background-color: #f0c0b0;
+}
+
+html .linkName {
+  color: #0F0C5D;
+}
+
+html .linkName:hover {
+    color: #ff0000;
+}
+
+html .noEmailName, html .noEmailName:hover {
+  color: #117743;
+}
+
+html .quoteLink {
+  color: #ff0000;
+}
+
+html .linkSelf {
+  color: #800000;
+}
+
+html .linkSelf:hover {
+  color: #d00;
+}
+
+html .linkQuote {
+  color: #800000;
+}
+
+html.linkQuote:hover {
+  color: #d00;
+}
+
+html .labelSubject {
+  color: #d00;
+}
+
+html .labelRole {
+  color: #ff0000;
+}
+
+html .divBanMessage {
+  color: #ff0000;
+}
+
+
+/* markdown */
+html .greenText {
+  color: #789922;
+}
+
+html .redText {
+  color: #d00;
+}
+
+html span.spoiler {
+  background: #000;
+  color: #000;
+}
+
+html .spoiler:hover {
+  color: #800000;
+  background-color: #f0e0d6;
+}
+
+
+/* catalog */
+html .red {
+  color: #af0a0f;
+}
+
+html .catalogCell {
+  background-color: rgba(182, 182, 182, 0.12);
+  border: 2px solid rgba(111, 111, 111, 0.34);
+}
+
+
+/* qr */
+html #quick-reply table {
+  background: rgb(240, 224, 214);
+  border-color: #800;
+}
+
+html #post-form-inner th {
+   background: #EA8 !important;
+}
