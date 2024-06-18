@@ -3,7 +3,10 @@ Imageboard software written in Python
 Any user can create and manage their own board  
 
 ## How to run - Windows
-Run the *start-http.bat* file to start the server, make sure you have Uvicorn installed
+Run the *start-http.bat* file to start the server, make sure you have Uvicorn installed  
+
+## How to run - Linux
+Run *nohup start.sh & disown* to start the server
 
 ## Installation
 To install Overboard Infinity, navigate to http://127.0.0.1 and configure the imageboard  
