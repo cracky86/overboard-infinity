@@ -1,0 +1,101 @@
+<html><link type="text/css" id="dark-mode" rel="stylesheet" href=""><style type="text/css" id="dark-mode-custom-style"></style><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="static/files/global.css" type="text/css" rel="stylesheet">
+  <!-- page specific -->
+  <style>
+    nav {
+      font-size: 70%;
+    }
+    nav a {
+      font-size: 100%;
+      float: none;
+    }
+    nav ul.nonmenu > li:after {
+      content: '/';
+    }
+    nav ul.nonmenu > li:last-of-type:after {
+      content: none;
+    }
+    nav ul {
+      font-size: 100%;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+    }
+    nav ul.nonmenu li {
+      display: inline-block;
+    }
+    nav ul.nonmenu:before {
+      content: '['
+    }
+    nav ul.nonmenu:after {
+      content: ']'
+    }
+  </style>
+<title>Overboard Infinity</title></head>
+<body>
+<div id="pageScroll">
+  <div id="topBox" class="infoBox">
+    <h2>Overboard Infinity</h2>
+    <p>This is an anonymous imageboard that promotes ideas over identity. Here anyone can run their own boards.</p>
+    <p>We're actively working to improve the site. Any and all feedback is appreciated.</p>
+  </div>
+
+  <div id="indexWrapper">
+    <div id="innerWrapper">
+
+      <!-- board list  style="display: none" -->
+      <div id="divBoards" class="topBoards infoBox">
+      <div class="topBoards infoBox">
+        <h2 style="margin-top: 5px">Boards:</h2>
+      <form action="/delboard" method="post" enctype="multipart/form-data">
+        <!-- deletion form -->
+        <div class="post-list"> 
+		{% for post in posts %} 
+		<div class="thread">
+		<input name="post_ids" type="checkbox" value="{{ post.boardname|string }}">
+			<h3 class="postname">{{post.boardname}}</h3>
+            <a href="{{'/goboard/' + post.boardname|string }}">
+              <p>[Enter]</p>
+			</a>
+
+          <br> {% endfor %}
+          <hr>
+        </div>
+        <br> {% if not authed %} <label for="passw">Password:</label>
+        <br>
+        <input type="password" id="passw" name="passw" autocomplete="off">
+		{% endif %}
+		{% if authed %}
+		<p>Ban poster</p>
+		<input type="checkbox" id="ban" value="ban">
+		{% endif %}
+        <br>  <input type="submit" value="Delete">
+		
+        <br>
+        <br>
+        <a href="login">Mod login</a>
+      </form>
+      </div>
+
+    
+    </div>
+
+  </div>
+</div>
+<footer>
+    <div id="footerInfo">
+	<p>Running on FastAPI for Python</p>
+	<p>Rendering took {{time|string}}s</p>
+	<br>
+	<p>Memory usage:</p>
+	<img id="dynamic-image" class="memusage" src="static/files/assets/usage.png">
+	<br>    </div>
+  </footer>
+
+
+
+</body></html>

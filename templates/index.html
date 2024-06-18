@@ -173,7 +173,7 @@ function closeModal() {
 function updateImage() {
 	const img = document.getElementById('dynamic-image');
 	const timestamp = new Date().getTime(); // Prevent caching
-	img.src = '/image?t=' + timestamp;
+	img.src = '../static/files/assets/image?t=' + timestamp;
 }
 setInterval(updateImage, 15000);
 </script>
@@ -182,8 +182,7 @@ setInterval(updateImage, 15000);
 
 	<header>
     <div class="title">
-      <h1><b>Overboard</b></h1>
-      <h3>under construction</h3>
+      <h1><b>Overboard Infinity</b></h1>
     </div>
 	</header>
 	<hr>
@@ -353,7 +352,6 @@ setInterval(updateImage, 15000);
 	<p>Memory usage:</p>
 	<img id="dynamic-image" class="memusage" src="../static/files/assets/usage.png">
 	<br>
-	<a href="https://github.com/ablaternae/py-tripcode">Tripcode method designed by ablaternae on Github</a>
 	</footer>
 	</div>
   </body>

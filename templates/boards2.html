@@ -234,7 +234,7 @@
         <table>
           <tr>
             <img src="/static/files/assets/logo.png" width=160px height=220px>
-            <p>Active threads</p>
+            <p>Boards</p>
           </tr>
           <tr> {% for post in posts %} <td>
               <a href="../board/{{post.id}}/">{{post.title}}</a>
@@ -243,177 +243,37 @@
       </div>
     </nav>
     <div class="main-content">
-      <form action="/threadpost/" method="post" enctype="multipart/form-data">
-        <fieldset>
-          <h3>New thread</h3>
-          <table id="postform">
-            <tbody>
-              <tr>
-                <td class="label">
-                  <label for="title">Title</label>
-                </td>
-                <td>
-                  <input name="title" id="title" type="text" autocomplete="off">
-                </td>
-              </tr>
-              <tr>
-                <td class="label">
-                  <label for="name">Name (leave empty for anonymous)</label>
-                </td>
-                <td>
-                  <input name="name" id="name" type="text" autocomplete="off">
-                </td>
-              </tr>
-              <tr>
-                <td class="label">
-                  <label for="comment">Message</label>
-                </td>
-                <td>
-                  <textarea name="comment" id="comment" rows="4" cols="24"></textarea>
-                </td>
-              </tr>
-              <tr>
-                <td class="label">
-                  <label for="file">File</label>
-                </td>
-                <td>
-                  <input name="file" id="file" type="file" size="35">
-                </td>
-              </tr> {% if not is_solved %} <tr>
-                <td class="label">
-                  <label for="captcha">CAPTCHA</label>
-                  <img src="{{ url_for('static', path='files/captcha/' + session.captcha_img|string) }}">
-                </td>
-                <td>
-                  <input name="captcha" id="captcha" type="text" autocomplete="off">
-                </td>
-              </tr> {% endif %} <tr>
-                <td class="label">
-                  <label for="postpassword">
-                    <abbr title="Is used to delete posts.">Password</abbr>
-                  </label>
-                </td>
-                <td>
-                  <input name="password" id="postpassword" type="text" autocomplete="off">
-                </td>
-              </tr>
-              <tr>
-                <td colspan="2">
-                  <ul id="postinfo">
-                    <li>Allowed filetypes are gif, jpeg, jpg, png, webp</li>
-                    <li>The biggest allowed filesize is 10 MB.</li>
-                  </ul>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <td>
-            <input type="submit" value="Post">
-          </td>
-        </fieldset>
-      </form>
+		<a href="newboard">Create board</a>
       <br>
-      <form action="/delete" method="post" enctype="multipart/form-data">
+      <form action="/delboard" method="post" enctype="multipart/form-data">
         <!-- deletion form -->
-        <div class="post-list"> {% for post in posts %} <div class="thread">
-            <table>
-              <tr>
-                <p>{{post.filename}}</p>
-              </tr>
-              <tr>
-                <td>
-                  <input name="post_ids" type="checkbox" value="{{ post.id|string }}">
-                  <!-- select messages you want to delete -->
-                </td>
-                <td>
-                  <p class="titlepost">
-                    <b>{{ post.title }}</b>
-                  </p>
-                </td>
-                <td>
-                  <p class="postname">
-                    <b>{{ post.author }}</b>
-                  </p>
-                </td>
-                <td>
-                  <p>{{ post.date }}, {{ post.time }} No.{{ post.id }}</p> {% if authed %}
-                </td>
-                <td>
-                  <p>{{ post.ip }}</p> {% endif %}
-                </td>
-              </tr>
-            </table>
-            <a href="{{'../board/' + post.id|string }}">
-              <p>[Reply]</p>
-            </a> {% if post.hasimage %} <img src="{{ url_for('static', path='files/' + post.filename|string) }}" onclick="openModal('{{ url_for('static', path='files/' + post.filename|string) }}')" width=250 height=250>
-            <!-- The Modal -->
-            <div id="imageModal" class="modal">
-              <span class="close" onclick="closeModal()">&times;</span>
-              <img class="modal-content" id="modalImage">
-              <div id="caption"></div>
-            </div> {% endif %} {% for line in post.content %} <p class="postcontent">{{ line }}</p> {% endfor %}
-          </div> {% for reply in post.thread %} <br>
-          <div class="post">
-            <table>
-              <tr>
-                <td>
-                  <input name="post_ids" type="checkbox" value="{{ reply.id|string }}">
-                  <!-- select messages you want to delete -->
-                </td>
-                <td>
-                  <p class="titlepost">
-                    <b>{{ reply.title }}</b>
-                  </p>
-                </td>
-                <td>
-                  <p class="postname">
-                    <b>{{ reply.author }}</b>
-                  </p>
-                </td>
-                <td>
-                  <p>{{ reply.date }}, {{ reply.time }} No.{{ reply.id }}</p> {% if authed > 0 %}
-                </td>
-                <td>
-                  <p>{{ reply.ip }}</p> {% endif %}
-                </td>
-              </tr>
-            </table> {% if reply.hasimage %} <img src="{{ url_for('static', path='files/' + reply.filename|string) }}" style="width:125px;height:125px;" onclick="openModal('{{ url_for('static', path='files/' + reply.filename|string) }}')">
-            <!-- The Modal -->
-            <div id="imageModal" class="modal">
-              <span class="close" onclick="closeModal()">&times;</span>
-              <img class="modal-content" id="modalImage">
-              <div id="caption"></div>
-            </div> {% endif %} {% for line in reply.content %} <p class="postcontent">{{ line }}</p> {% endfor %}
-          </div>
+        <div class="post-list"> 
+		{% for post in posts %} 
+		<div class="thread">
+		<input name="post_ids" type="checkbox" value="{{ post.boardname|string }}">
+			<h3 class="postname">{{post.boardname}}</h3>
+            <a href="{{'/goboard/' + post.boardname|string }}">
+              <p>[Enter]</p>
+			</a>
+
           <br> {% endfor %}
-          <hr> {% endfor %}
+          <hr>
         </div>
-        <br> {% if authed == 0 %} <label for="passw">Password:</label>
+        <br> {% if not authed %} <label for="passw">Password:</label>
         <br>
-        <input type="text" id="passw" name="passw" autocomplete="off">
+        <input type="password" id="passw" name="passw" autocomplete="off">
 		{% endif %}
-		{% if authed == 2 %}
+		{% if authed %}
 		<p>Ban poster</p>
-		<input type="checkbox" id="ban" value="ban" name="ban">
+		<input type="checkbox" id="ban" value="ban">
 		{% endif %}
         <br>  <input type="submit" value="Delete">
 		
         <br>
         <br>
-        <a href="../boardlogin">Board mod login</a>
+        <a href="login">Mod login</a>
       </form>
       <hr>
-	  {% if authed == 0 %}
-	  <h3>You are not logged in as site admin or board admin</h3>
-	  {% endif %}
-	  {% if authed == 1 %}
-	  <h3>You are logged in as board admin</h3>
-	  {% endif %}
-	  {% if authed == 2	  %}
-	  <h3>You are logged in as site admin</h3>
-	  {% endif %}
-
-	  <hr>
       <footer>
         <p>Running on FastAPI for Python</p>
         <p>Rendering took {{time|string}}s</p>
