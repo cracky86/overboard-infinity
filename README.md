@@ -2,6 +2,9 @@
 Imageboard software written in Python  
 Any user can create and manage their own board  
 
+# NOTICE
+## Overboard Infinity is being deprecated
+
 ## How to run - Windows
 Run the *start-http.bat* file to start the server, make sure you have Uvicorn installed  
 
